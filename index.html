@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=DM+Serif+Display:ital@0;1&family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="valentine-confession.css">
+    <title>Valenitens Cofession with Record Player</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <p class="instruction">Click the heart!</p>
+    <div class="container">
+        <label>
+            <div class="heart">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg"></img>
+            </div>
+            <input id="messageState" type="checkbox" style="display:none"/>
+        </label>
+        <div class="message">
+            <h1 style="font-family: Cinzel, serif; font-size: 40px; letter-spacing: 1.2px;">Dear Nini,</h1>
+            <p> 
+                <span>
+                    &emsp; No one and I mean no one has ever loved me and appreciated me the way that you do. You make me feel safe like no one has ever, you love me like no one has ever, you care for me like no one as ever, and I can't imagine a life where i'm not with you. I love you with everything in me and i never wanna lose you. The way your so gentle and delicated with me and the way you actively try to love and appreciate me, God I can't believe i met you. I'n everything I do, i think of you. You're my every thought, you are the fiber of my being. Such intense things for you.
+                </span>
+                <br> <br>
+                <span>
+                    &emsp;I love you like i've loved no other and I will continue loving you with all the love I have in me because I want it to be you nini. I'm proud to be your's and for you to be mine.
+
+                </span>      
+            </p>
+            <br>
+            <div class="sincere">
+                <p style="font-weight: bold;"> With Love,</p>
+                <p>Rori</p>
+                <button onclick="openPopup()" class="popup-trigger">CLICK ME PLSS</button>
+             </div>
+             <!-- Pop-up Container -->
+<div id="popupContainer" class="popup-container">
+    <div class="popup-content">
+        <h2>Will you be my girlfriend?</h2>
+        <div class="gif_container">
+            <img src="https://media.tenor.com/efbi1EpFlVUAAAAi/bugcat-capoo.gif" alt="Cute Capoo GIF">
+        </div>
+        <div class="popup-buttons">
+            <button id="yesButton">Yes!</button>
+            <button id="noButton">No</button>
+        </div>
+    </div>
+</div>
+
+<div id="letsGoPopup" class="lets-go-popup">
+    <div class="container">
+        <div>
+            <h1 class="header_text">YESSSSSSSSSSSS!</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://media.tenor.com/YTw87WdiaasAAAAi/tkthao219-capoo.gif">
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+
+    <div class="player">
+      <div class="record">
+        <div class="label"></div>
+      </div>
+      <div class="tone-arm">
+        <div class="control"></div>
+      </div>
+      <button class="btn"></button>
+      <div class="slider-container">
+        <input
+          type="range"
+          class="slider"
+          min="0"
+          max="1"
+          step="0.1"
+          value="0.7"
+        />
+      </div>
+    </div>
+   
+    
+<audio loop class="my-song" src="Mac-Miller-Congratulations-ft-Bilal-(HipHopKit.com).mp3" preload="auto"></audio>
+
+    <!-- Script -->
+    <script src="jquery.js"></script>
+    <script src="jquery2.1.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

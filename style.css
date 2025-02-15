@@ -1,0 +1,531 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8d76e;
+    margin: 0px;
+}
+
+h1,
+p {
+    font-family: "Quicksand";
+    font-optical-sizing: auto;
+}
+
+h1 {
+    font-weight: 200;
+}
+
+.instruction {
+    position: absolute;
+    font-size: 1.6rem;
+    color: rgba(255, 0, 0, 0.554);
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    transition: transform 2s;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.heart > img {
+    width: 50px;
+    height: auto;
+    animation-name: beat;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+.message {
+    padding: 25px;
+    background-color: #eee;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-size: clamp(16px, 10vw, 17px);
+    text-align: justify;
+    line-height: 1.5em;
+    width: 80%;
+    max-width: 550px;
+    height: 78%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    animation-name: openmsg;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.message .sincere {
+    text-align: left;
+    font-family: "Cinzel, serif";
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+.message .sincere p {
+    margin: 0;
+}
+
+.player {
+    background-color: #d52f31;
+    width: 330px;
+    height: 190px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 8px;
+    box-shadow: 0 8px 0 0 #be272a;
+    margin: 300px;
+    margin-left: -550px;
+}
+
+.record {
+    height: 175px;
+    width: 175px;
+    background-color: #181312;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.record:before,
+.record:after {
+    position: absolute;
+    content: "";
+    border: 5px solid transparent;
+    border-top-color: #2c2424;
+    border-bottom-color: #2c2424;
+    border-radius: 50%;
+}
+
+.record:before {
+    height: 135px;
+    width: 135px;
+}
+
+.record:after {
+    height: 95px;
+    width: 95px;
+}
+
+.label {
+    background-color: #181312;
+    height: 15px;
+    width: 15px;
+    border: 20px solid #ff8e00;
+    border-radius: 50%;
+}
+
+.tone-arm {
+    height: 90px;
+    width: 6px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 25px;
+    right: 95px;
+    transition: 1s;
+    transform-origin: top;
+}
+
+.control {
+    background-color: #181312;
+    height: 17px;
+    width: 17px;
+    border: 10px solid #2c2c2c;
+    border-radius: 50%;
+    position: absolute;
+    top: -16px;
+    left: -16px;
+}
+
+.tone-arm:before {
+    content: "";
+    height: 40px;
+    width: 6px;
+    background-color: #ffffff;
+    position: absolute;
+    transform: rotate(30deg);
+    bottom: -36px;
+    right: 10px;
+}
+
+.tone-arm:after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 10px;
+    border-top: 18px solid #b2aea6;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    top: 108px;
+    right: 12.5px;
+    transform: rotate(30deg);
+}
+
+.btn {
+    height: 28px;
+    width: 28px;
+    background-color: #ed5650;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    border: none;
+    border: 3.5px solid #be272a;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    transform: rotate(-90deg);
+    width: 90px;
+    height: 7px;
+    position: absolute;
+    left: 233px;
+    top: 60px;
+    background-color: #be272a;
+    outline: none;
+    border-radius: 25px;
+    border: 6px solid #ed5650;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 12px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.play {
+    transform: rotate(30deg);
+    transform-origin: top;
+    transition: 1s;
+}
+
+.on {
+    animation: spin 3s 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes beat {
+    0% {
+        width: 50px;
+    }
+    25% {
+        width: 58px;
+    }
+    30% {
+        width: 50px;
+    }
+    50% {
+        width: 45px;
+    }
+    60% {
+        width: 50px;
+    }
+    75% {
+        width: 58px;
+    }
+    100% {
+        width: 50px;
+    }
+}
+
+@keyframes openmsg {
+    0% {
+        height: 0px;
+        padding: 0px 20px;
+    }
+    100% {
+        height: 75%;
+        padding: 20px 20px;
+    }
+}
+
+@keyframes heartMove {
+    0% {
+        top: 50%
+    }
+    100% {
+        top: 85%;
+        transform: translate(-50%, 0);
+    }
+}
+
+.openNor {
+    animation-direction: normal;
+    animation-play-state: running;
+}
+
+.closeNor {
+    animation-direction: reverse;
+    animation-play-state: running;
+}
+
+.no-anim {
+    animation: none;
+}
+
+.closed {
+    height: 0px;
+    padding: 0px 20px;
+}
+
+.bottom {
+    bottom: 5px;
+}
+
+.openHer {
+    animation-name: heartMove;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-play-state: running;
+    animation-fill-mode: forwards;
+}
+
+.closeHer {
+    animation-name: heartMove;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-play-state: running;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+}
+
+.beating > img {
+    animation-name: beat;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+.openedHer {
+    top: 85%;
+    transform: translate(-50%, 0);
+}
+
+
+/* Pop-up Container */
+.popup-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above everything */
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h2 {
+    font-family: 'Indie Flower', cursive;
+    font-size: 24px;
+    color: #ff6b81;
+    margin-bottom: 20px;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.popup-buttons button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: 'Indie Flower', cursive;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#yesButton {
+    background-color: #e82643;
+    color: white;
+}
+
+#yesButton:hover {
+    background-color: #ff4757;
+}
+
+#noButton {
+    background-color: #ddd;
+    color: #333;
+}
+
+#noButton:hover {
+    background-color: #ccc;
+}
+
+.popup-trigger{
+    background: rgba(211, 55, 73, 0.9); /* Semi-transparent pink */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-top: 20px;;
+}
+
+
+
+
+
+
+/* Pop-up Container */
+.popup-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above everything */
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h2 {
+    font-family: 'Indie Flower', cursive;
+    font-size: 24px;
+    color: #ff6b81;
+    margin-bottom: 20px;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.popup-buttons button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: 'Indie Flower', cursive;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#yesButton {
+    background-color: #ff6b81;
+    color: white;
+}
+
+#yesButton:hover {
+    background-color: #ff4757;
+}
+
+#noButton {
+    background-color: #ddd;
+    color: #333;
+    position: relative; /* Required for moving the button */
+}
+
+#noButton:hover {
+    background-color: #ccc;
+}
+
+/* "Let's go!" Pop-up */
+.lets-go-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Above the "Will you be my girlfriend?" pop-up */
+}
+
+.lets-go-popup .container {
+    background-color: #000000;
+    padding: 40px;
+    border-radius: 20px;
+    border: 30px solid #55282f;
+    box-shadow: 0 8px 20px rgba(255, 107, 129, 0.3);
+    text-align: center;
+    border-top: 30px;;
+}
+
+
+.lets-go-popup .header_text {
+    font-size: 50px;
+    font-weight: bold;
+    color: #0c0204;
+    margin-top:200px;
+    text-shadow: 2px 2px 4px rgba(255, 107, 129, 0.2);
+}
+
+.lets-go-popup .gif_container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 100px;
+}
